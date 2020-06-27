@@ -123,6 +123,12 @@
             <p>Demandes</p>
           </a>
         </li>
+        <li  *ngIf=authenticationService.isResp() class="nav-item">
+          <a href="#" routerLink="/Users-list" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Gestion des Users</p>
+          </a>
+        </li>
 
         <li  *ngIf=authenticationService.isResp() class="nav-item">
         <a href="#" routerLink="/list-departement" class="nav-link">
@@ -152,6 +158,14 @@
           </a>
         </li>
         <li class="nav-header"> Compte </li>
+        <li class="nav-item">
+          <a  class="nav-link" class="btn" href="#" routerLink="/compte" class="nav-link">
+            <i class="nav-icon far fa-circle text-warning"></i>
+            <p> My Compte</p>
+
+          </a>
+        </li>
+
         <li class="nav-item">
           <a  class="nav-link" *ngIf=this.isLoggedIn class="btn" href="/logout" (click)=handleLogout()>
             <i class="nav-icon far fa-circle text-warning"></i>

@@ -49,9 +49,9 @@
             <tr *ngFor="let demande of demandes | async">
               <td class="h5" >{{demande.montant_net}}</td>
               <td class="h5" >{{demande.salarie.nom_salarie}}  {{demande.salarie.prenom_salarie}}</td>
-              <td class="h5" >{{demande.prime_max}}</td>
+              <td class="h5" >{{demande.prime_maximale|number:'0.2'}}</td>
               <td class="h5" >{{demande.prime_manager}}</td>
-              <td class="h5" >{{demande.prime_DG}} </td>
+              <td class="h5" >{{demande.prime_pdg}} </td>
               <td class="h5" >{{demande.prime_finale }} </td>
               <td class="h5" >{{demande.date_debut | date }}</td>
               <td class="h5" >{{demande.date_fin | date  }}</td>

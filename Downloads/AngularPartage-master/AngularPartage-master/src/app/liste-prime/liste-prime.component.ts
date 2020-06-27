@@ -18,8 +18,7 @@ export class ListePrimeComponent implements OnInit {
 
   public  reloadData() {
     if ( this.isDG()) {
-      this.demandes = this.demandeService.getDemandeListdg();
-    } else if (this.isManager()) {
+      this.demandes = this.demandeService.getDemandeListdg(); } else {
       this.demandes = this.demandeService.getDemandeList2();
     }
   }

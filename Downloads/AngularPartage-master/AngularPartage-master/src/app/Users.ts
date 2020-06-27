@@ -1,9 +1,9 @@
 import { Salarie } from './salarie';
 export class Users {
   id: number;
-  username: String;
+  login: String;
   password: String;
-
+  totalHits: number;
   email: string;
   active: string;
   salarie: Salarie ;

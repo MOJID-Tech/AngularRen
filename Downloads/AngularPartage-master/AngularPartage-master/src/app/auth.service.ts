@@ -14,6 +14,7 @@ export class AuthenticationService {
   public username: string;
   public password: string;
   public  roles: string[];
+  public  resetpass = false ;
 
   constructor(private http: HttpClient) {
 
@@ -96,5 +97,13 @@ export class AuthenticationService {
   }
   public isResp() {
     return ( this.isManager() || this.isDG() || this.isAdmin()) ;
+  }
+
+  reset(email2: string , login: string ) {
+     const params = new HttpParams()
+      .set('email', email2)
+       .set('login', login);
+    // return this.http.post('http://localhost:8050/demande', {params} , new FormData(), headers);
+     return this.http.post<Response>(`http://localhost:8050/users/reset-password`, params , {observe : 'response'} );
   }
 }

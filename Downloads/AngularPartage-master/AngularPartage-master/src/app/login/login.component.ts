@@ -51,4 +51,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  resetpass() {
+   this.authenticationService.resetpass = true;
+   console.log(this.authenticationService.resetpass);
+   // @ts-ignore
+   this.router.navigate('/create');
+   this.authenticationService.resetpass = false;
+   location.reload();
+  }
+  isreset() {
+    return this.authenticationService.resetpass;}
 }

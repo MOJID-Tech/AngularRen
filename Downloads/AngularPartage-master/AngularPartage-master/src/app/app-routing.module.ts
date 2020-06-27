@@ -8,6 +8,9 @@ import { ListDepartementComponent } from './list-departement/list-departement.co
 import { ListEquipeComponent } from './list-equipe/list-equipe.component';
 import { HistoriqueComponent } from './historique/historique.component';
 import { HistoretatsComponent } from './historetats/historetats.component';
+import {DeletComponent} from './delet/delet.component';
+import {ListDemandeComponent} from './list-demande/list-demande.component';
+import {DetailleComponent} from "./detaille/detaille.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'list-departement', component: ListDepartementComponent},
   {path: 'equipes/:id', component: ListEquipeComponent},
   {path: 'historiques', component: HistoriqueComponent },
+  {path: 'Users-list', component: ListePrimedgComponent},
   {path: 'etats/:id', component: HistoretatsComponent  },
+  {path: 'create', component: ListDemandeComponent  },
+  {path: 'compte', component: DetailleComponent  },
 ];
 
 @NgModule({

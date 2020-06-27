@@ -7,16 +7,21 @@
         <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
         <div class="form-group">
           <label for="email">User Name :</label>
-          <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Enter User Name"
-                 name="username">
+          <input type="text" class="form-control" id="username"  [(ngModel)]="username" placeholder="Enter User Name"
+                 autocomplete="off"     name="username">
         </div>
         <div class="form-group">
           <label for="pwd">Password:</label>
           <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter password"
-                 name="password">
+                 autocomplete="off"   name="password">
         </div>
         <button (click)=handleLogin() class="btn btn-success">Login</button>
       </form>
+      <p><a (click)=resetpass() class="text-warning"> Mot De Passe Oublié </a></p>
+      <div   *ngIf="isreset()" class = "align-content-center">
+
+        <app-list-demande> </app-list-demande>
+      </div>
     </div>
   </div>
 </div>
