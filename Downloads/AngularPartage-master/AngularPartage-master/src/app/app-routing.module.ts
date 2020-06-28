@@ -11,6 +11,7 @@ import { HistoretatsComponent } from './historetats/historetats.component';
 import {DeletComponent} from './delet/delet.component';
 import {ListDemandeComponent} from './list-demande/list-demande.component';
 import {DetailleComponent} from "./detaille/detaille.component";
+import { ReportingComponent } from './reporting/reporting.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,6 +27,8 @@ const routes: Routes = [
   {path: 'etats/:id', component: HistoretatsComponent  },
   {path: 'create', component: ListDemandeComponent  },
   {path: 'compte', component: DetailleComponent  },
+  {path: 'reporting', component: ReportingComponent },
+
 ];
 
 @NgModule({

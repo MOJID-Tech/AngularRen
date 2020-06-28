@@ -197,3 +197,14 @@ body{
   cursor: pointer;
   border-radius: 12px;
 }
+
+
+
+.fonrecri{
+  font-style : italic;
+  font-weight : 600;
+  text-align : center ;
+
+
+
+}

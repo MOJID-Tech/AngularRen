@@ -146,13 +146,13 @@
 
         <li   *ngIf=authenticationService.isResp() class="nav-header">Reporting</li>
         <li  *ngIf=authenticationService.isResp() class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#"  class="nav-link">
             <i class="nav-icon far fa-circle text-danger"></i>
             <p class="text">Prime</p>
           </a>
         </li>
         <li  *ngIf=authenticationService.isResp() class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" routerLink="/reporting" class="nav-link">
             <i class="nav-icon far fa-circle text-warning"></i>
             <p>Benefice</p>
           </a>

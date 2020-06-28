@@ -104,21 +104,6 @@ export class ListDepartementComponent implements OnInit {
 
   }
 
-  /*/*
-      search()
-      {
 
-
-
-           this.departements=this.departements..pipe(filter(res=>
-
-               return res.nom_depar.toLowerCase().indexof(this.nom.toLowerCase())!==-1)
-
-            );)
-
-
-
-      }
-  */
 
 }

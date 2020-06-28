@@ -19,6 +19,11 @@ import { HistoretatsComponent } from './historetats/historetats.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ListDemandeComponent} from './list-demande/list-demande.component';
 import { DetailleComponent } from './detaille/detaille.component';
+import {  DemandeFilterPipe  } from  './historique/demande-filer.pipe';
+import {  PrimeFilterPipe  } from  './liste-prime/prime-filer.pipe';
+import { DatePipe } from '@angular/common';
+import { ChartsModule } from 'ng2-charts';
+import { ReportingComponent } from './reporting/reporting.component';
 
 @NgModule({
   declarations: [
@@ -35,22 +40,27 @@ import { DetailleComponent } from './detaille/detaille.component';
     HistoriqueComponent,
     HistoretatsComponent,
     ListDemandeComponent,
-    DetailleComponent
+    DetailleComponent,
+    DemandeFilterPipe,
+    PrimeFilterPipe,
+    ReportingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptorService,
-      multi: true
-    }
-  ],
+   providers: [
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpInterceptorService,
+        multi: true
+      } ,
+        DatePipe
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

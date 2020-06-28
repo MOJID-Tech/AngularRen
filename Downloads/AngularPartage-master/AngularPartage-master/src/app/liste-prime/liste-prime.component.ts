@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {AuthenticationService} from '../auth.service';
 import { Demande } from '../demande';
 import { DemandeService } from '../demande.service';
+
 @Component({
   selector: 'app-liste-prime',
   templateUrl: './liste-prime.component.html',
@@ -12,13 +13,17 @@ import { DemandeService } from '../demande.service';
 export class ListePrimeComponent implements OnInit {
 
   public demandes: Observable<Demande[]>;
+  selectedDevice : string;
+  searchText : string ;
+
   public  constructor(private demandeService: DemandeService, private authenticationService: AuthenticationService,
                       private router: Router) { }
   public   ngOnInit() { this.authenticationService.loadToken(); this.reloadData(); }
 
   public  reloadData() {
     if ( this.isDG()) {
-      this.demandes = this.demandeService.getDemandeListdg(); } else {
+      this.demandes = this.demandeService.getDemandeListdg();
+    } else if (this.isManager()) {
       this.demandes = this.demandeService.getDemandeList2();
     }
   }
@@ -59,5 +64,13 @@ export class ListePrimeComponent implements OnInit {
   public  isAuthenticated() {
     return this.authenticationService.isAuthenticated();
   }
+
+    onChange(newValue) {
+                 console.log(newValue);
+                 this.selectedDevice = newValue;
+
+                 // ... do other stuff here ...
+             }
+
 
 }

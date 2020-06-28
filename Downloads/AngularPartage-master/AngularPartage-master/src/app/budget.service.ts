@@ -9,8 +9,8 @@ import {AuthenticationService} from './auth.service';
 })
 export class BudgetService implements OnInit {
      constructor(private http: HttpClient , private authenticationService: AuthenticationService  ) {}
-
-     headers = new HttpHeaders({'Access-Control-Allow-Origin' : '*'});
+      public montant_budget :  number[]=[];
+      headers = new HttpHeaders({'Access-Control-Allow-Origin' : '*'});
 
        private baseUrlM = 'http://localhost:8050/budgetequipe/BeneficeManager';
 
@@ -24,6 +24,16 @@ export class BudgetService implements OnInit {
     this.authenticationService.loadToken();
   }
 
+
+      savebudget(id: number,value : number)
+      {
+           this.montant_budget[id]=value;
+      }
+
+      getbudget(id : number)
+      {
+        return this.montant_budget[id];
+      }
       createBudgetDepartement(id: string, montant: string ) {
         const params = new HttpParams()
           .set('montant', montant)
@@ -78,9 +88,37 @@ export class BudgetService implements OnInit {
          return this.http.get(`${this.baseUrlBD}/${id}`,{headers});
        }
 
+
+       private baseUrlBDM = 'http://localhost:8050/budget/MontantBudgetDepartement';
+       getMontantBudgetDepa(id:number): Observable<any> {
+                       const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
+                       return this.http.get(`${this.baseUrlBDM}/${id}`, {headers});
+       }
+
         getBudgetEquipe(id: number ): Observable<any> {
           const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
           return this.http.get(`${this.baseUrlBE}/${id}`, {headers});
        }
 
+         private baseUrlCE = 'http://localhost:8050/benefices/ContributionEquipe';
+        getContributionEquipe(id:number): Observable<any> {
+         const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
+         return this.http.get(`${this.baseUrlCE}/${id}`, {headers});
+        }
+
+
+
+
+        private baseUrlCSE = 'http://localhost:8050/benefices/ContributionSalarie';
+        getContrSalarieEquipe(id :number , idequipe : number): Observable<any> {
+             const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
+             return this.http.get(`${this.baseUrlCSE}/${id}/${idequipe}`, {headers});
+       }
+
+
+       private baseUrlCEQ = 'http://localhost:8050/benefices/Equipes';
+       getEquipeSalarie(id :number): Observable<any> {
+                    const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
+                    return this.http.get(`${this.baseUrlCEQ}/${id}`, {headers});
+       }
 }

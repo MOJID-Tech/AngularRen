@@ -20,28 +20,6 @@ export class DepartementService implements  OnInit {
      }
 
 
-/*
-     getBenefice(id : number) : Observable<any>{
-
-        const params = new HttpParams()
-        .set('id', "1");
-
-      const headers = new HttpHeaders()
-        .set('Authorization', 'Basic xpto')
-        .set('Content-Type', 'application/x-www-form-urlencoded');
-
-      const httpOptions = {
-        headers,
-        params
-
-      };
-         //return this.http.get('http://localhost:8050/departements/Benefice');
-    return this.http.get<Response>('http://localhost:8050/departements/Benefice',  new FormData(), httpOptions );
-    }
-
-
-    */
-
    private baseUrl = 'http://localhost:8050/departements/Benefi';
    getBene(id : number): Observable<any> {
      const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
@@ -54,5 +32,22 @@ export class DepartementService implements  OnInit {
      const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
      return this.http.get(`${this.baseUrlEquipe}/${id}`, {headers});
    }
+
+     private baseUrlSal = 'http://localhost:8050/departements/membres';
+     getmembres(id : number): Observable<any> {
+          const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
+          return this.http.get(`${this.baseUrlSal}/${id}`, {headers});
+      }
+     private baseUrlMan = 'http://localhost:8050/departements/manager';
+     getmanagers(id : number): Observable<any> {
+          const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
+          return this.http.get(`${this.baseUrlMan}/${id}`, {headers});
+      }
+
+      private baseUrlTeam = 'http://localhost:8050/departements/team';
+      getteam(id : number): Observable<any> {
+              const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
+              return this.http.get(`${this.baseUrlTeam}/${id}`, {headers});
+      }
 
 }
