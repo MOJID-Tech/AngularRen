@@ -5,9 +5,9 @@ import { Appartient  } from './appartient';
 
 export class Salarie {
  id :  number;
- nom_salarie : string ;
+ nomsalarie: string ;
  prenom_salarie : string ;
- email_salarie : string ;
+ emailsalarie : string ;
  tel_salarie : string ;
  date_naissance : Date ;
  demandes : Demande [];

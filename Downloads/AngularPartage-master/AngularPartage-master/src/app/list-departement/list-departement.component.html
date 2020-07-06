@@ -47,7 +47,7 @@
 
 
                   <ng-template  #notexist >
-                    <td>  {{budgetdepartement[departement.id].pourcentage * 100  }} % </td>
+                    <td>  {{budgetdepartement[departement.id].pourcentage * 100 |number:'0.2' }} % </td>
                   </ng-template>
                   <ng-template #exist>
                     <td> 0 </td>

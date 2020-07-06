@@ -55,7 +55,7 @@
             <tr>
 
               <th scope="col">Montant Demandé</th>
-              <th scope="col">Montant Brute</th>
+             
               <th scope="col">Pourcentage Contribution</th>
               <th scope="col">Prime Maximale</th>
               <th scope="col">Prime Manager</th>
@@ -69,8 +69,8 @@
             <tbody>
             <tr *ngFor="let demande of demandes | async  | primeFilter:searchText:selectedDevice">
               <td class="h5">{{demande.montant_net|number:'0.2'}}</td>
-              <td class="h5">{{demande.montant_brut|number:'0.2'}}</td>
-              <td class="h5">{{demande.pourcentageContribution|number:'0.2'}}</td>
+              
+              <td class="h5">{{demande.pourcentageContribution * 100|number:'0.2'}}</td>
               <td class="h5">{{demande.prime_maximale|number:'0.2'}}</td>
               <td class="h5" *ngIf=isDG()>{{demande.prime_manager|number:'0.2'}}
               </td >
@@ -82,7 +82,7 @@
               <td  class="h5">
                 {{demande.date_debut | date  }}
               </td>
-              <td class="h5"> <p>{{demande.salarie.nom_salarie}}        {{demande.salarie.prenom_salarie}} </p></td>
+              <td class="h5"> <p>{{demande.salarie.nomsalarie}}        {{demande.salarie.prenom_salarie}} </p></td>
               <td>
                 <button (click) = "ValidatePrim1(demande.id, demande.prime_manager,demande.prime_pdg,this.authenticationService.username)"  class="btn btn-success">   <svg class="bi bi-check2-square"   width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>

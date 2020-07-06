@@ -71,7 +71,7 @@
                 <tbody>
                 <tr *ngFor="let demande of demandes | async | demandeFilter:searchText:selectedDevice">
                   <td class="h5" >{{demande.montant_net}}</td>
-                  <td class="h5" >{{demande.salarie.nom_salarie}}  {{demande.salarie.prenom_salarie}}</td>
+                  <td class="h5" >{{demande.salarie.nomsalarie}}  {{demande.salarie.prenom_salarie}}</td>
                   <td class="h5" >{{demande.prime_maximale | number}}</td>
                   <td class="h5" >{{demande.prime_manager}}</td>
                   <td class="h5" >{{demande.prime_pdg}} </td>

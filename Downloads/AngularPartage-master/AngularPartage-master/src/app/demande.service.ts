@@ -82,7 +82,7 @@ export class DemandeService implements OnInit {
   }
   public getDemandeList(): Observable<any> {
     const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});
-    return this.http.get('http://localhost:8050/demande/alldemandes' ,{headers});
+    return this.http.get('http://localhost:8050/demande/historique' ,{headers});
   }
   getEtatDemandeList(id: number): Observable<any> {
     const  headers = new HttpHeaders({authorization : 'Bearer ' + this.authenticationService.jwt});

@@ -16,6 +16,7 @@ export class HelloWorldComponent implements OnInit {
               private router: Router) { }
 
   message: string;
+  envoye : number;
   /*
     constructor(private helloWorldService: HelloWordService) { }
 
@@ -25,6 +26,7 @@ export class HelloWorldComponent implements OnInit {
       this.helloWorldService.helloWorldService().subscribe( (result) => {
         this.message = result.content;
       });
+      this.envoye=0;
     }
 
   constructor() {}
@@ -49,6 +51,11 @@ export class HelloWorldComponent implements OnInit {
       this.demande.salarie = this.users.salarie;
     }*/
 
+
+   opensweetalert()
+  {
+    
+  }
   public  save() {
 
     this.demande.date_debut = new Date();
@@ -56,18 +63,18 @@ export class HelloWorldComponent implements OnInit {
     // this.users.username = this.authenticationService.username;
     // @ts-ignore
     // tslint:disable-next-line:max-line-length
-    this.demandeService.createDemandee(this.demande.montant_net, this.authenticationService.username). subscribe(data => console.log(data), error => console.log(error));
+    this.demandeService.createDemandee(this.demande.montant_net, this.authenticationService.username). subscribe(data => this.envoye=1, error => console.log(error));
     // this.demande = new Demande();
     this.gotoList();    }
 
   public onSubmit() {
     this.submitted = true;
     this.save();
-
+    //swal("A Basic JS alert by a plug-in");
   }
 
   public  gotoList() {
-    this.router.navigate(['/liste-prime']);
+    ///this.router.navigate(['/liste-prime']);
   }
 }
 

@@ -9,30 +9,45 @@
         <!-- Small boxes (Stat box) -->
       <div class="container col-lg-4">
 
+        <form class="form-group">
+       
+ <br> <br>
+        <span class="txt1 p-b-11"  *ngIf="isreset()" >
+						Username
+	</span>
+	
+	<input  type="text" *ngIf="isreset()"  [(ngModel)]="login" id="login" name="login" >
+       	<span class="txt1 p-b-11" *ngIf="isreset()">Email</span>
+						<span class="btn-show-pass">
+							<i class="fa fa-eye"></i>
+						</span>
+       <input *ngIf="isreset()"  type="email"  [(ngModel)]="email2" id="email2"  name="email2">
+      
 
+        <!--    <label *ngIf="isreset()"  >login:</label> -->
 
+        <!--
             <br>
-          <form class="form-group">
-
-            <label *ngIf="isreset()"  >login:</label>
-
-
-            <br>
-            <input *ngIf="isreset()"  type="text" class="form-control" [(ngModel)]="login" id="login" placeholder="Enter email valide "
-                   name="login">
-
-            <br>
-
+            <input *ngIf="isreset()"  type="text"  class="input100"  [(ngModel)]="login" id="login" placeholder="Enter email valide "
+                    name="login">
+          -->
+           
+    
+              <!--
             <label *ngIf="isreset()"  >Email:</label>
+             -->
 
-
-            <br>
-            <input *ngIf="isreset()"  type="email" class="form-control" [(ngModel)]="email2" id="email2" placeholder="Enter email valide "
+       
+   <!--         
+<input *ngIf="isreset()"  type="email"  [(ngModel)]="email2" id="email2" placeholder="Enter email valide " class="input100"
                    name="email2">
-
+ -->
             <br>
-            <button *ngIf="isreset()" (click)=reset(email2,login) class="btn btn-info" >Cofirmer </button>
 
+        <div class="container-login100-form-btn">
+  <button *ngIf="isreset()" (click)=reset(email2,login) class="login100-form-btn" >Confirmer </button>
+       </div>
+        
 
               <br>
               <label *ngIf="issaveupdate()" >login :</label>

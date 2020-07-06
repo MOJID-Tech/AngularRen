@@ -24,6 +24,9 @@ import {  PrimeFilterPipe  } from  './liste-prime/prime-filer.pipe';
 import { DatePipe } from '@angular/common';
 import { ChartsModule } from 'ng2-charts';
 import { ReportingComponent } from './reporting/reporting.component';
+import { LoganComponent } from './logan/logan.component';
+import { ResetpageComponent } from './resetpage/resetpage.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { ReportingComponent } from './reporting/reporting.component';
     DetailleComponent,
     DemandeFilterPipe,
     PrimeFilterPipe,
-    ReportingComponent
+    ReportingComponent,
+    LoganComponent,
+    ResetpageComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { ReportingComponent } from './reporting/reporting.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    SweetAlert2Module.forRoot()
   ],
    providers: [
       {

@@ -29,7 +29,7 @@ export class DemandeFilterPipe implements PipeTransform
        return demandes.filter(demande => demande.montant_net.toString().toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
 
       else if(nombre==2)
-       return demandes.filter(demande => demande.salarie.nom_salarie.toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
+       return demandes.filter(demande => demande.salarie.nomsalarie.toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
 
           // par prime maximale
 

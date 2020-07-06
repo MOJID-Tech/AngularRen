@@ -12,6 +12,7 @@ import {DeletComponent} from './delet/delet.component';
 import {ListDemandeComponent} from './list-demande/list-demande.component';
 import {DetailleComponent} from "./detaille/detaille.component";
 import { ReportingComponent } from './reporting/reporting.component';
+import { LoganComponent } from './logan/logan.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'create', component: ListDemandeComponent  },
   {path: 'compte', component: DetailleComponent  },
   {path: 'reporting', component: ReportingComponent },
+  {path: 'test', component: LoganComponent },
 
 ];
 

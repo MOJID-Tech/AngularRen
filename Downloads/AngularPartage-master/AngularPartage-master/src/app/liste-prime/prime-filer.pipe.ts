@@ -11,7 +11,13 @@ import {formatDate} from '@angular/common';
 )
 export class PrimeFilterPipe implements PipeTransform
 {
-
+    
+    multpile(prime : number)
+    { 
+       return prime * 100;
+    } 
+    
+   
 
    private datePipe: DatePipe;
    transform(demandes : Demande [], searchterm : string,nombre : number) :  Demande []
@@ -28,7 +34,7 @@ export class PrimeFilterPipe implements PipeTransform
        return demandes.filter(demande => demande.montant_net.toString().toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
 
       else if(nombre==2)
-       return demandes.filter(demande => demande.salarie.nom_salarie.toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
+       return demandes.filter(demande => demande.salarie.nomsalarie.toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
 
           // par prime maximale
 
@@ -51,7 +57,7 @@ export class PrimeFilterPipe implements PipeTransform
      {
           console.log(" test : ",parseFloat(searchterm));
 //          return demandes.filter(demande =>  demande.prime_DG==parseFloat(searchterm) );
-      return demandes.filter(demande => demande.pourcentageContribution.toString().toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
+      return demandes.filter(demande => this.multpile(demande.pourcentageContribution).toString().toLowerCase().indexOf(searchterm.toLowerCase()) !== -1);
 
      }
          // par Date demande
