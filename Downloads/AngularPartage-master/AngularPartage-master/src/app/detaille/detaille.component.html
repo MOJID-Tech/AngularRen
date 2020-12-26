@@ -1,0 +1,89 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(".hamburger").click(function(){
+      $(".wrapper").toggleClass("collapse");
+    });
+  });
+</script>
+
+<div class="wrapper">
+
+  <app-slidemenu></app-slidemenu>
+
+  <div class = "row-cols-md-10">
+    <div class="main_container">
+      <div class="item">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="fonrecri"   class = "text-capitalize"  class = "text-center"> Mes Informations </h2>
+            <br><br>
+          </div>
+
+          <div  class="panel-body">
+            <br>
+            <br>
+            <div>
+              <button type="button"  (click)="goto()" class="btn btn-secondary btn-lg" >Change Password </button>
+            </div>
+            <br>
+            <br>
+
+
+<div   class="align-content-center" *ngIf="employee">
+      <h3>
+        <label><p> Username : </p></label> {{employee.login}}
+      </h3>
+  <br> <br>
+      <h3>
+        <label><b>First Name: </b></label> {{employee.salarie.prenom_salarie}}
+      </h3>
+  <br> <br>
+  <h3>
+        <label><b>last Name: </b></label> {{employee.salarie.nomsalarie}}
+      </h3>
+  <br> <br>
+  <h3>
+    <label><b>Is Active : </b></label> {{employee.active}}
+  </h3>
+  <br> <br>
+  <h3>
+    <label><b>Number phone : </b></label> {{employee.salarie.tel_salarie}}
+  </h3>
+  <br> <br>
+  <h3>
+    <label><b>Date Naissance  : </b></label> {{employee.salarie.datenaissance_salarie}}
+  </h3>
+  <br> <br>
+  <h3>
+        <label><b>Roles: </b></label> {{get( )}}
+      </h3>
+  <br> <br>
+  <h3>
+        <label><b>Email : </b></label> {{employee.salarie.emailsalarie}}
+      </h3>
+  <br> <br>
+
+</div>
+    </div>
+
+
+
+  </div>
+</div>
+    </div>
+  </div>
+  <div  *ngIf="isChange()"  class = "align-content-center">
+
+    <app-list-demande> </app-list-demande>
+  </div>
+
+
+</div>
+
+
+
+
+

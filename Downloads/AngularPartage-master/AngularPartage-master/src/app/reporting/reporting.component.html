@@ -1,0 +1,176 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(".hamburger").click(function(){
+      $(".wrapper").toggleClass("collapse");
+    });
+  });
+</script>
+
+<div class="wrapper">
+
+  <app-slidemenu></app-slidemenu>
+  <div class="main_container">
+    <div class="item">
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2 class="fonrecri"   class = "text-capitalize"  class = "text-center">Les statistiques</h2>
+          <br><br>
+        </div>
+        <div class="panel-body">
+
+          
+            <div class="panel-body">
+              
+
+          <br><br>
+            
+
+                <div class="bas">
+                <div class="a">
+                  <canvas
+                    baseChart
+                    [chartType]="'bar'"
+                    [datasets]="chartData"
+                    [labels]="mabels"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    [colors]="colors"
+                    height="100"
+                    width="100"
+                    (chartClick)="onChartClick($event)">
+                  </canvas>
+                </div>
+                <div class="b">
+                  <select   [ngModel]="selectedDevice" (ngModelChange)="onChange($event)" class="form-control">
+                    <option *ngFor="let departement of departements | async" value= "{{departement.id}}" >{{departement.nom_depar}}</option>
+                  </select>
+                  <br><br>
+
+                  <div *ngIf="selectedDevice!=null" class="chartjs-container">
+                    <canvas
+                      baseChart
+                      [data]="benequipes"
+                      [labels]="nomequipes"
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [colors]="pieChartColors"
+                      [legend]="pieChartLegend">
+                    </canvas>
+                  </div>
+                </div>
+
+              </div>
+              <br><br>
+              <br><br>
+              <br><br>
+              <!--fin de -->
+
+              <div class="c">
+
+<!--
+                <div>
+                  <select  [ngModel]="selectedEquipe" (ngModelChange)="onChangeEquipe($event)"   class="form-control">
+                    <option *ngFor="let equipe of equipes | async" value= "{{equipe.id}}" >{{equipe.nom_equipe}}</option>
+                  </select>
+                </div>
+
+
+                <div *ngIf="selectedEquipe!=null" class="chartjs-container">
+                  <canvas
+                    baseChart
+                    [data]="salariequipes"
+                    [labels]="salaries"
+                    [chartType]="pieChartType"
+                    [options]="pieChartOptions"
+                    [plugins]="pieChartPlugins"
+                    [colors]="pieChartColors"
+                    [legend]="pieChartLegend">
+                  </canvas>
+                </div>
+
+
+-->
+
+                <!--
+                    <canvas
+                      baseChart
+                      [chartType]="'bar'"
+                      [datasets]="chartData"
+                      [labels]="salaries"
+                      [options]="chartOptions"
+                      [legend]="true"
+                      [colors]="colors"
+                      height="100"
+                      width="100"
+                      (chartClick)="onChartClick($event)">
+                    </canvas>
+                -->
+
+
+                <!--
+              <div *ngIf="selectedEquipe!=null"     class="chartjs-container">
+                <canvas baseChart
+                        [datasets]="managerequipes"
+                        [labels]="managers"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+
+
+                        [legend]="barChartLegend"
+                        [colors]="colorsmang"
+                        [chartType]="barChartType">
+                </canvas>
+              </div>
+              -->
+
+<!--
+                <div>
+                  <select   [ngModel]="selectedSalarie" (ngModelChange)="onChangeSalarie($event)"    class="form-control">
+                    <option *ngFor="let salarie of allsalaries | async" value= "{{salarie.id}}" >{{salarie.nom_salarie}} {{salarie.prenom_salarie}}</option>
+                  </select>
+                </div>
+-->
+                <!--
+                <div class="chart-wrapper"  *ngIf="selectedSalarie!=null">
+                <canvas baseChart
+                        [datasets]="chartDataSalariEquipe"
+                        [labels]="equipesfound"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                </canvas>
+             </div>
+
+         --->
+
+                <div class="chart-wrapper"  *ngIf="selectedSalarie!=null">
+                  <canvas baseChart
+                          [datasets]="barChartDataa"
+                          [labels]="equipesfound"
+                          [options]="barChartOptions"
+                          [plugins]="barChartPlugins"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType">
+                  </canvas>
+                </div>
+              </div>
+
+            </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+</div>
+
