@@ -1,0 +1,86 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(".hamburger").click(function(){
+      $(".wrapper").toggleClass("collapse");
+    });
+  });
+</script>
+
+<div class="wrapper">
+
+  <app-slidemenu></app-slidemenu>
+  <div class="main_container">
+    <div class="item">
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2 class="fonrecri"   class = "text-capitalize"  class = "text-center">La liste des demande des primes </h2>
+          <br><br>
+        </div>
+        <div class="panel-body">
+          <table  class="table">
+            <thead class="thead-dark">
+            <tr>
+
+              <th scope="col">Montant Demandé</th>
+              <th scope="col">Montant Brute</th>
+              <th scope="col">Pourcentage Contribution</th>
+              <th scope="col">Prime Maximale</th>
+              <th scope="col">Prime Manager</th>
+              <th scope="col">Prime Directeur</th>
+              <th scope="col">Date de demande</th>
+              <th scope="col">Demandé par  </th>
+              <th scope="col"> Valider </th>
+              <th scope="col"> Refuser </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demande of demandes | async">
+              <td class="h5">{{demande.montant_net|number:'0.2'}}</td>
+              <td class="h5">{{demande.montant_brut|number:'0.2'}}</td>
+              <td class="h5">{{demande.pourcentageContribution|number:'0.2'}}</td>
+              <td class="h5">{{demande.prime_maximale|number:'0.2'}}</td>
+              <td class="h5" *ngIf=isDG()>{{demande.prime_manager|number:'0.2'}}
+              </td >
+              <td  class="h5" *ngIf=!isDG()><input   type="text"   class="h5"class="form-control"  [(ngModel)]=demande.prime_manager  id="prime_manager" required  name={{demande.prime_manager}}><br></td>
+              <td class="h5"  *ngIf=isDG()>
+                <input   class="h5"  type="text" class="form-control"  [(ngModel)]=demande.prime_pdg  id="prime_pdg" required  name={{demande.prime_pdg}}>
+              </td>
+              <td class="h5" *ngIf=!isDG() >{{demande.prime_pdg |number:'0.2'}}</td>
+              <td  class="h5">
+                {{demande.date_debut | date  }}
+              </td>
+              <td class="h5"> <p>{{demande.salarie.nom_salarie}}        {{demande.salarie.prenom_salarie}} </p></td>
+              <td>
+                <button (click) = "ValidatePrim1(demande.id, demande.prime_manager,demande.prime_pdg,this.authenticationService.username)"  class="btn btn-success">   <svg class="bi bi-check2-square"   width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                  <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+                </svg></button>
+              </td>
+              <td>
+                <button (click) ="RefusePrim1(demande.id,demande.prime_manager,demande.prime_pdg,this.authenticationService.username)" class="btn btn-danger">  <svg class="bi bi-x-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                  <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                  <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                </svg></button>
+
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+</div>
+
