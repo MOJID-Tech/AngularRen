@@ -1,0 +1,53 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+		$(document).ready(function(){
+			$(".hamburger").click(function(){
+			   $(".wrapper").toggleClass("collapse");
+			});
+		});
+	</script>
+
+<div class="wrapper">
+  <app-slidemenu></app-slidemenu>
+  <div class="main_container">
+    <div class="item">
+
+      <div class="panel panel-primary">
+
+        <div  class="panel-heading">
+          <h2 class="fonrecri"   class = "text-center"  >La liste des demande des primes </h2>
+          <br><br>
+        </div>
+        <div class="panel-body">
+          <table  class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th  scope="col">Montant Net</th>
+              <th  scope="col" >Montant Brut</th>
+              <th  scope="col" >Date Debut</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demande of demandes | async">
+              <td class="h5">{{demande.montant_net}}</td>
+              <td class="h5">{{demande.montant_brut}}</td>
+              <td class="h5">{{demande.date_debut}}</td>
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+</div>
+

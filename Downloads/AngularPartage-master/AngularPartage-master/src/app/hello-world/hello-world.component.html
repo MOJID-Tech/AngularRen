@@ -1,0 +1,87 @@
+<div class="wrapper">
+  <app-slidemenu></app-slidemenu>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div  class="panel-heading">
+      <h2 class="fonrecri"   class = "text-center"  >La demande d'une prime </h2>
+      <br><br>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+
+          <div class="panel panel-primary">
+
+            <div class="panel-body">
+              <div   class="form-inline"  [hidden]="submitted" style="width: 400px;">
+                <form   class="form-inline"  (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <h4  class = "text-capitalize"  class = "text-left" > Montant de la prime :  </h4> <br>
+                    <input type="text" class="form-control"  [(ngModel)]=demande.montant_net  id="montant_net" required  name="montant_net">
+                  </div>
+                  <br><div  class ="col-md-9">
+                  <button  type="submit" class="btn btn-dark btn-lg"><span > <svg class="bi bi-reply-all-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+     <path d="M8.079 11.9l4.568-3.281a.719.719 0 0 0 0-1.238L8.079 4.1A.716.716 0 0 0 7 4.719V6c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>
+    <path fill-rule="evenodd" d="M10.868 4.293a.5.5 0 0 1 .7-.106l3.993 2.94a1.147 1.147 0 0 1 0 1.946l-3.994 2.94a.5.5 0 0 1-.593-.805l4.012-2.954a.493.493 0 0 1 .042-.028.147.147 0 0 0 0-.252.496.496 0 0 1-.042-.028l-4.012-2.954a.5.5 0 0 1-.106-.699z"/>
+      </svg></span><br>Envoyer</button>
+                </div>
+
+                </form>
+
+              </div>
+
+              <div [hidden]="!submitted">
+                <h4>You submitted successfully!</h4>
+                <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- /.card -->
+
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0-pre
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+
+
+
