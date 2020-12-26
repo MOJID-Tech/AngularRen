@@ -1,0 +1,105 @@
+<div class="wrapper">
+  <app-slidemenu></app-slidemenu>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="fonrecri"  lass = "text-center" >Le bénefice  des départements </h2>
+              <br><br>
+            </div>
+            <div class="panel-body">
+
+              <table  class="table">
+                <thead class="thead-dark">
+                <tr>
+
+
+                  <th  scope="col">Nom de département</th>
+                  <th  scope="col">Bénéfice</th>
+                  <th  scope="col">Budget</th>
+                  <th  scope="col">Pourcentage </th>
+                  <th  scope="col">save</th>
+                  <th  scope="col">Equipes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let departement of departements | async">
+
+                  <td class="h5">{{departement.nom_depar}}</td>
+                  <td class="h5"> {{get(departement.id)}}  </td>
+
+                  <td class="h5">
+                    <input type="text" [(ngModel)]="arr[departement.id]" name="montant_budget" id="montant_budget">
+                  </td>
+                  <div *ngIf="getbudgetDepartement(departement.id)==null;then exist else notexist"></div>
+
+
+                  <ng-template  #notexist >
+                    <td>  {{budgetdepartement[departement.id].pourcentage | number }} </td>
+                  </ng-template>
+                  <ng-template #exist>
+                    <td> 0 </td>
+
+                  </ng-template>
+                  <td class="h5">
+                    <button   (click)="save(departement.id,arr[departement.id])" class="btn btn-info"                                        style="margin-left: 10px">save</button>
+                  </td>
+
+                  <td class="h5">
+                    <button (click)="getequipes(departement.id)" class="btn btn-info" style="margin-left: 10px">  <i class="fa fa-address-book"></i>Details</button>
+                  </td>
+
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- /.card -->
+
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0-pre
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
