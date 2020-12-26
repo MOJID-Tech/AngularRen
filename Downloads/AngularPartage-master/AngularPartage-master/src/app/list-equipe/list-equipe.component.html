@@ -1,0 +1,85 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(".hamburger").click(function(){
+      $(".wrapper").toggleClass("collapse");
+    });
+  });
+</script>
+
+<div class="wrapper">
+
+  <app-slidemenu></app-slidemenu>
+  <div class="main_container">
+    <div class="item">
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2 class="fonrecri"   class = "text-capitalize"  class = "text-center">Le bénefice  des Equipes  </h2>
+          <br><br>
+        </div>
+        <div class="panel-body">
+
+         
+          <br><br>
+            <table  class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Equipe</th>
+              <th scope="col">Benefice des managers</th>
+              <th scope="col">Benefice des salaries</th>
+              <th scope="col">Budget Manager</th>
+              <th scope="col">Budget Hors Manager</th>
+              <th scope="col">Pourcentage Manager</th>
+              <th scope="col">Pourcentage HorsManager</th>
+              <th scope="col">Consommation</th>
+              <th scope="col">Traitement</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let equipe of equipes | async">
+
+              <td class="h5">{{equipe.nom_equipe}}</td>
+              <td class="h5"> {{getBeneficeM(equipe.id) | number}}  % </td>
+              <td class="h5"> {{getBeneficeHM(equipe.id) | number}} %   </td>
+
+              <td class="h5"><input  class="h5"type="text"   [(ngModel)]="arrmanager[equipe.id]"   class="form-control"></td>
+              <td><input  class="h5" type="text"   [(ngModel)]="arrhomanager[equipe.id]"  class="form-control"></td>
+              <div *ngIf="getbudgetEquipe(equipe.id)==null;then notexist else exist"></div>
+
+             <td class="h5">
+    <button   (click)="save(equipe.id,arrhomanager[equipe.id],arrmanager[equipe.id])" class="btn btn-info"     style="margin-left: 10px">save</button>
+              </td>
+
+             <ng-template  #exist >
+                <td>  {{budgetEquipe[equipe.id].pourcentage_manager * 100 | number}} % </td>
+                <td>  {{budgetEquipe[equipe.id].pourcentage_horsmanager * 100 | number}} % </td>
+                <td>  {{getrest(equipe.id)}}   </td>
+              </ng-template>
+              <ng-template #notexist>
+                <td> 0 </td>
+                <td> 0  </td>
+                <td> 0  </td>
+              </ng-template>
+
+
+
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+</div>
+
