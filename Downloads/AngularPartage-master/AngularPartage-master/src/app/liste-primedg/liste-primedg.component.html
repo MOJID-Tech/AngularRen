@@ -1,0 +1,136 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(".hamburger").click(function(){
+      $(".wrapper").toggleClass("collapse");
+    });
+  });
+</script>
+
+<div class="wrapper">
+
+    <app-slidemenu></app-slidemenu>
+
+<div class = "row-cols-md-10">
+  <div  class="main_container">
+    <div class="item">
+
+      <div class="panel panel-primary">
+
+        <div class="panel-heading">
+          <h2 class="fonrecri"   class = "text-capitalize"  class = "text-center">La liste  des Users </h2>
+          <br><br>
+        </div>
+        <div class="panel-body">
+          <button  (click) = "Save()"  class="btn btn-light"> <svg class="bi bi-person-plus-fill" width="2.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+            <path fill-rule="evenodd" d="M13 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"/>
+          </svg></button>
+         <br> <br>
+          <table  class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Active</th>
+              <th scope="col">Login</th>
+              <th scope="col"> Nom Salarie</th>
+              <th scope="col"> Prenom Salarie</th>
+              <th scope="col"> email Salarie</th>
+              <th scope="col"> Roles </th>
+              <th scope="col"> +Role+ </th>
+              <th scope="col">          </th>
+              <th scope="col"> -Role- </th>
+              <th scope="col"> Update </th>
+              <th scope="col"> Desactive </th>
+              <th scope="col"> Active </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let User of Userslist ">
+              <td class="h5">{{User.active}}</td>
+              <td class="h5">{{User.login}}</td>
+              <td class="h5"> {{User.salarie.nom_salarie}} </td>
+              <td class="h5"> {{User.salarie.prenom_salarie}} </td>
+              <td class="h5"> {{User.salarie.email_salarie}} </td>
+              <td class="h5"> {{get(User.id)}}</td>
+
+
+              <td class="h5">  <button  (click) ="addrole(User.id)"  class="btn btn-light">   <svg class="bi bi-bag-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M14 5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5zM1 4v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1z"/>
+                <path d="M8 1.5A2.5 2.5 0 0 0 5.5 4h-1a3.5 3.5 0 1 1 7 0h-1A2.5 2.5 0 0 0 8 1.5z"/>
+                <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"/>
+                <path fill-rule="evenodd" d="M7.5 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-2z"/>
+              </svg></button></td>
+              <td><div class="input-group">
+               <select [ngModel]="selectedDevice" (ngModelChange)="onChange($event)" class = "form-control" >
+
+
+
+                  <option [value]="1">DG</option>
+                  <option [value]="2">Manager</option>
+
+                  <option [value]="3">User</option>
+
+
+               </select>
+              </div></td>
+              <td class="h5">  <button (click) ="removerole(User.id)"   class="btn btn-light">   <svg class="bi bi-bag-dash" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M14 5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5zM1 4v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1z"/>
+                <path d="M8 1.5A2.5 2.5 0 0 0 5.5 4h-1a3.5 3.5 0 1 1 7 0h-1A2.5 2.5 0 0 0 8 1.5z"/>
+                <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+              </svg></button></td>
+              <td class="h3" ><button   (click) ="Update(User.id,User.login, User.password)" class ="btn btn-lg" class ="btn btn-dark"> <svg class="bi bi-arrow-counterclockwise" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M12.83 6.706a5 5 0 0 0-7.103-3.16.5.5 0 1 1-.454-.892A6 6 0 1 1 2.545 5.5a.5.5 0 1 1 .91.417 5 5 0 1 0 9.375.789z"/>
+                <path fill-rule="evenodd" d="M7.854.146a.5.5 0 0 0-.708 0l-2.5 2.5a.5.5 0 0 0 0 .708l2.5 2.5a.5.5 0 1 0 .708-.708L5.707 3 7.854.854a.5.5 0 0 0 0-.708z"/>
+              </svg></button></td>
+              <td class="h5" ><button   (click) ="desactive(User.id)"  class="btn btn-light"> <svg class="bi bi-toggle-off" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
+              </svg></button></td>
+              <td class="h5">  <button   (click) ="active(User.id)"   class="btn btn-light">  <svg class="bi bi-toggle-on" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+              </svg></button></td>
+
+            </tr>
+            </tbody>
+
+
+          </table>
+
+
+
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+  </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+      <ul class="pagination pagination-lg"    >
+
+        <li  class="page-item" [ngClass]="{'active':currentPage==(i+1)}" *ngFor="let p of
+           pages; let i=index" class="clickable">
+          <a     class="h5"  class="page-link"  (click)="gotoPage(i)"> {{i+1}}  </a>
+        </li>
+
+      </ul>
+      </ul>
+    </nav>
+
+
+</div>
+</div>
+
+  <div  *ngIf=issave()  class = "align-content-center">
+
+   <app-list-demande> </app-list-demande>
+    </div>
+
+</div>
